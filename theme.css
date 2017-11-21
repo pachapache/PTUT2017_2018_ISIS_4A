@@ -1,0 +1,7 @@
+.back-info, .back, .info {
+    display: none;
+}
+
+.collapsible {
+    background-color: white;
+}
