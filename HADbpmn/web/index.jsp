@@ -25,7 +25,7 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center orange-text">Holla !</h1>
+      <h1 class="header center orange-text">Hola !</h1>
       <div class="row center">
         <h5 class="header col s12 light">Lahus sur l'objectif de cette application ?</h5>
       </div>
