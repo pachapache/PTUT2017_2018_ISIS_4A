@@ -63,7 +63,6 @@
                       <option value="" disabled selected>Sexe</option>
                       <option value="1">Homme</option>
                       <option value="2">Femme</option>
-                      <option value="3">Autre</option>
                     </select>
                   </div>
 
@@ -86,6 +85,12 @@
                     <i class="material-icons prefix">add_circle</i>
                     <input type="text" class="validate" required="true">
                     <label>Numéro de sécurité sociale</label>
+                  </div>
+
+                  <div class="input-field col s4">
+                    <i class="material-icons prefix">add_circle</i>
+                    <input type="text" class="validate" required="true">
+                    <label>IPP</label>
                   </div>
 
                   <div class="input-field col s8">
@@ -141,16 +146,29 @@
               <div class="collapsible-body">
                 <div class="row">
 
-                  <div class="input-field col s6">
+                  <div class="input-field col s4">
                     <i class="material-icons prefix">accessibility</i>
                     <input type="text" class="validate">
                     <label>Taille</label>
                   </div>
 
-                  <div class="input-field col s6">
+                  <div class="input-field col s4">
                     <i class="material-icons prefix">linear_scale</i>
                     <input type="text" class="validate">
                     <label>Poids</label>
+                  </div>
+
+                  <div class="col s4">
+                    <i class="material-icons prefix">accessible</i>
+                    Etes vous valide ?
+                    <div class="switch" style="display: inline-block">
+                      <label>
+                        Non
+                        <input type="checkbox">
+                        <span class="lever"></span>
+                        Oui
+                      </label>
+                    </div>
                   </div>
 
                   <div class="input-field col s6">
