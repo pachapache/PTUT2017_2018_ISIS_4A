@@ -1,141 +1,142 @@
 package Model;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Patient {
     
-    private String name;
-    private String firstName;
-    private Sexe sexe;
-    private Date birth;
-    private String placeBirth;
-    private int socialSecurityNumber;
-    private String ipp;
-    private String adress;
-    private int phoneNumber;
-    private String email;
-    private MaritalStatus maritalStatus; 
+    private String hasName;
+    private String hasFirstName;
+    private Sexe hasSex;
+    private Date hasBirth;
+    private String hasPlaceOfBirth;
+    private int hasSocialSecurityNumber;
+    private String hasReferenceNumberID;
+    private String hasAdress;
+    private int hasPhoneNumber;
+    private String hasEmail;
+    private MaritalStatus hasMaritalStatus; 
     private Boolean isInternet;
-    private int weight;
-    private int size;
+    private int hasWeight;
+    private int hasSize;
     private Boolean isValide;
-    private String allergies;
-    private String pathology;
-    private String antecedents;
-    private Boolean validEntourage;
-    private Boolean placeAccesible;
-    private String notes;
+    private String hasAllergies;
+    private ArrayList<Pathology> hasDisease;
+    private String hasPrevious;
+    private Boolean hasValideFamily;
+    private Boolean isAccesiblePlace;
+    private String hasInformation;
 
-    public Patient(String name, String firstName, Sexe sexe, Date birth, String placeBirth, int socialSecurityNumber, String ipp, String adress, int phoneNumber, MaritalStatus maritalStatus, String email, Boolean isInternet, int weight, int size, Boolean isValide, String allergies, String pathology, String antecedents, Boolean validEntourage, Boolean placeAccesible, String notes) {
-        this.name = name;
-        this.firstName = firstName;
-        this.sexe = sexe;
-        this.birth = birth;
-        this.placeBirth = placeBirth;
-        this.socialSecurityNumber = socialSecurityNumber;
-        this.ipp = ipp;
-        this.adress = adress;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+    public Patient(String name, String firstName, Sexe sexe, Date birth, String placeBirth, int socialSecurityNumber, String ipp, String adress, int phoneNumber, MaritalStatus maritalStatus, String email, Boolean isInternet, int weight, int size, Boolean isValide, String allergies, ArrayList<Pathology> pathology, String antecedents, Boolean validEntourage, Boolean placeAccesible, String notes) {
+        this.hasName = name;
+        this.hasFirstName = firstName;
+        this.hasSex = sexe;
+        this.hasBirth = birth;
+        this.hasPlaceOfBirth = placeBirth;
+        this.hasSocialSecurityNumber = socialSecurityNumber;
+        this.hasReferenceNumberID = ipp;
+        this.hasAdress = adress;
+        this.hasPhoneNumber = phoneNumber;
+        this.hasEmail = email;
         this.isInternet = isInternet;
-        this.weight = weight;
-        this.size = size;
+        this.hasWeight = weight;
+        this.hasSize = size;
         this.isValide = isValide;
-        this.allergies = allergies;
-        this.pathology = pathology;
-        this.antecedents = antecedents;
-        this.validEntourage = validEntourage;
-        this.placeAccesible = placeAccesible;
-        this.notes = notes;
+        this.hasAllergies = allergies;
+        this.hasDisease = pathology;
+        this.hasPrevious = antecedents;
+        this.hasValideFamily = validEntourage;
+        this.isAccesiblePlace = placeAccesible;
+        this.hasInformation = notes;
     }
 
     public String getName() {
-        return name;
+        return hasName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.hasName = name;
     }
 
     public String getFirstName() {
-        return firstName;
+        return hasFirstName;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.hasFirstName = firstName;
     }
     
     public Sexe getSexe() {
-        return sexe;
+        return hasSex;
     }
 
     public void setSexe(Sexe sexe) {
-        this.sexe = sexe;
+        this.hasSex = sexe;
     }
 
     public Date getBirth() {
-        return birth;
+        return hasBirth;
     }
 
     public void setBirth(Date birth) {
-        this.birth = birth;
+        this.hasBirth = birth;
     }
 
     public String getPlaceBirth() {
-        return placeBirth;
+        return hasPlaceOfBirth;
     }
 
     public void setPlaceBirth(String placeBirth) {
-        this.placeBirth = placeBirth;
+        this.hasPlaceOfBirth = placeBirth;
     }
 
     public int getSocialSecurityNumber() {
-        return socialSecurityNumber;
+        return hasSocialSecurityNumber;
     }
 
     public void setSocialSecurityNumber(int socialSecurityNumber) {
-        this.socialSecurityNumber = socialSecurityNumber;
+        this.hasSocialSecurityNumber = socialSecurityNumber;
     }
 
     public String getIpp() {
-        return ipp;
+        return hasReferenceNumberID;
     }
 
     public void setIpp(String ipp) {
-        this.ipp = ipp;
+        this.hasReferenceNumberID = ipp;
     }
 
     public String getAdress() {
-        return adress;
+        return hasAdress;
     }
 
     public void setAdress(String adress) {
-        this.adress = adress;
+        this.hasAdress = adress;
     }
 
     public int getPhoneNumber() {
-        return phoneNumber;
+        return hasPhoneNumber;
     }
 
     public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        this.hasPhoneNumber = phoneNumber;
     }
     
     
     public MaritalStatus getMaritalStatus() {
-        return maritalStatus;
+        return hasMaritalStatus;
     }
 
     public void setMaritalStatus(MaritalStatus maritalStatus) {
-        this.maritalStatus = maritalStatus;
+        this.hasMaritalStatus = maritalStatus;
     }
 
     public String getEmail() {
-        return email;
+        return hasEmail;
     }
 
     public void setEmail(String email) {
-        this.email = email;
+        this.hasEmail = email;
     }
 
     public Boolean getIsInternet() {
@@ -147,19 +148,19 @@ public class Patient {
     }
 
     public int getWeight() {
-        return weight;
+        return hasWeight;
     }
 
     public void setWeight(int weight) {
-        this.weight = weight;
+        this.hasWeight = weight;
     }
 
     public int getSize() {
-        return size;
+        return hasSize;
     }
 
     public void setSize(int size) {
-        this.size = size;
+        this.hasSize = size;
     }
 
     public Boolean getIsValide() {
@@ -171,51 +172,51 @@ public class Patient {
     }
 
     public String getAllergies() {
-        return allergies;
+        return hasAllergies;
     }
 
     public void setAllergies(String allergies) {
-        this.allergies = allergies;
+        this.hasAllergies = allergies;
     }
 
-    public String getPathology() {
-        return pathology;
+    public ArrayList<Pathology> getPathology() {
+        return hasDisease;
     }
 
-    public void setPathology(String pathology) {
-        this.pathology = pathology;
+    public void setPathology(ArrayList<Pathology> pathology) {
+        this.hasDisease = pathology;
     }
 
     public String getAntecedents() {
-        return antecedents;
+        return hasPrevious;
     }
 
     public void setAntecedents(String antecedents) {
-        this.antecedents = antecedents;
+        this.hasPrevious = antecedents;
     }
 
     public Boolean getValidEntourage() {
-        return validEntourage;
+        return hasValideFamily;
     }
 
     public void setValidEntourage(Boolean validEntourage) {
-        this.validEntourage = validEntourage;
+        this.hasValideFamily = validEntourage;
     }
 
     public Boolean getPlaceAccesible() {
-        return placeAccesible;
+        return isAccesiblePlace;
     }
 
     public void setPlaceAccesible(Boolean placeAccesible) {
-        this.placeAccesible = placeAccesible;
+        this.isAccesiblePlace = placeAccesible;
     }
 
     public String getNotes() {
-        return notes;
+        return hasInformation;
     }
 
     public void setNotes(String notes) {
-        this.notes = notes;
+        this.hasInformation = notes;
     }
     
 }
