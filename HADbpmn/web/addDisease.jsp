@@ -7,30 +7,48 @@
 
             <div class="row">
                 <h1 class="header center blue-text">Fill intervention for a disease</h1>
-                
                 <div class="center">
-                    <div class="input-field col l4 m12 s12">
-                        <select>
-                            <option value="" disabled selected>Disease</option>
-                            <option value="1">Anemia</option>
-                            <option value="2">Diabetes</option>
-                            <option value="2">Undernutrition</option>
-                        </select>
-                        <label>Disease</label>
+                    <div class="input-field col s12">
+                      <div class="input-field col s4">
+                        <input type="text" class="validate" required="true">
+                        <label>Name of disease</label>
+                      </div>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                    <div class="input-field col l2 m2 s12">
+              <div class="input-field col l3 m3 s12">
+                  <select>
+                      <option value="" disabled selected>Actor</option>
+                      <option value="CareGiver">CareGiver</option>
+                      <optgroup label="HomeCareProfessional">
+                          <option value="Administrative">Administrative</option>
+                          <option value="CareGiverProfessional">CareGiverProfessional</option>
+                          <option value="MedicalProfessional">MedicalProfessional</option>
+                          <option value="ParamedicsProfessional">ParamedicsProfessional</option>
+                          <option value="PharmacyProfessional">PharmacyProfessional</option>
+                          <option value="PsychoSocialProfessional">PsychoSocialProfessional</option>
+                      </optgroup>
+                      <option value="Patient">Patient</option>
+                  </select>
+              </div>
+
+                    <div class="input-field col s4">
                         <select>
-                            <option value="" disabled selected>Type d'intervention</option>
-                            <option value="1">Option 1</option>
-                            <option value="2">Option 2</option>
+                            <option value="" disabled selected>Type of action</option>
+                            <option value="BackOfficeActivity">BackOfficeActivity</option>
+                            <option value="CaseManagementActivity">CaseManagementActivity</option>
+                            <option value="EvaluationActivity">EvaluationActivity</option>
+                            <option value="HouseworkActivity">HouseworkActivity</option>
+                            <option value="MedicalActivity">MedicalActivity</option>
+                            <option value="PatientActivity">PatientActivity</option>
+                            <option value="PhysiotherapyActivity">PhysiotherapyActivity</option>
+                            <option value="RehabilitativeActivity">RehabilitativeActivity</option>
+                            <option value="SocialActivity">SocialActivity</option>
                         </select>
-                        <label>Type d'intervention</label>
                     </div>
-                    
+
                     <div class="input-field col l2 m2 s12">
                         <select>
                             <option value="" disabled selected>Action</option>
@@ -39,21 +57,8 @@
                         </select>
                         <label>Action</label>
                     </div>
-                
-                    <div class="input-field col l3 m3 s12">
-                        <select>
-                            <option value="" disabled selected>Actor</option>
-                            <option value="1">CareGiver</option>
-                            <optgroup label="HomeCareProfessional">
-                                <option value="1">Administrative</option>
-                                <option value="2">CareGiverProfessional</option>
-                                <option value="3">MedicalProfessional</option>
-                                <option value="4">ParamedicsProfessional</option>
-                            </optgroup>
-                            <option value="3">Patient</option>
-                        </select>
-                        <label>Actor</label>
-                    </div>
+
+
 
                     <div class="input-field col l2 m2 s12">
                         <select>
@@ -78,7 +83,7 @@
                         </select>
                         <label>Frequency</label>
                     </div>
-                    
+
                     <div class="col l1 m1 s12">
                         <a class="btn-floating btn-large waves-effect waves-light red" id="plus">
                             <i class="material-icons">add</i>
@@ -94,16 +99,16 @@
                 <div class="row">
                     <div class="input-field col l2 m2 s12">
                     </div>
-                    
+
                     <div class="input-field col l2 m2 s12">
                     </div>
-            
+
                     <div class="input-field col l3 m3 s12">
                     </div>
-                    
+
                     <div class="input-field col l2 m2 s12">
                     </div>
-                    
+
                     <div class="input-field col l2 m2 s12">
                         <select multiple>
                             <option value="1">Morning</option>
@@ -116,21 +121,21 @@
                     <div class="input-field col l1 m1 s12">
                         </div>
                 </div>
-                        
+
 
                 <div class="row">
                     <div class="input-field col l2 m2 s12">
                     </div>
-                    
+
                     <div class="input-field col l2 m2 s12">
                     </div>
-            
+
                     <div class="input-field col l3 m3 s12">
                     </div>
-                    
+
                     <div class="input-field col l2 m2 s12">
                     </div>
-                    
+
                     <div class="input-field col l1 m1 s6">
                         <input id="freq" type="text" class="validate">
                         <label for="freq">Nb</label>
@@ -163,7 +168,7 @@
     </div>
 
     <%@include file="pied.jsp" %>
-    
+
     <script>
         $(document).ready(function () {
             $('select').material_select();
@@ -176,8 +181,8 @@
                 $('select').material_select();
             });
 
-            
-            
+
+
         });
     </script>
 

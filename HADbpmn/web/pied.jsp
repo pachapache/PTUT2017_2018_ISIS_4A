@@ -27,7 +27,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-        Made thanks to <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        FIE4 - Promotion 2019 - Projet Tutoré 2017-2018
       </div>
     </div>
   </footer>

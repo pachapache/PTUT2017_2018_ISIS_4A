@@ -8,61 +8,48 @@
                 <span class="card-title">Patient </span>
               </div>
               <div class="card-action">
-                  
+
                 <div class="row">
                   <div class="col l3"></div>
-                  <a class="col l6 btn-large waves-effect waves-light btn orange"><i class="material-icons left">add</i>Ajouter</a>
+                  <a href="addPatient.jsp" class="col l6 btn-large waves-effect waves-light btn orange"><i class="material-icons left">add</i>Add</a>
                   <div class="col l3"></div>
                 </div>
                 <div class="row">
                   <div class="col l3"></div>
-                  <a class="col l6 btn-large waves-effect waves-light btn orange"><i class="material-icons left">search</i>Chercher</a>
+                  <a href="searchPatient.jsp" class="col l6 btn-large waves-effect waves-light btn orange"><i class="material-icons left">search</i>Search</a>
                   <div class="col l3"></div>
                 </div>
-                
+
               </div>
             </div>
           </div>
           <div class="col s12 m6">
             <div class="card blue-grey darken-1">
               <div class="card-content white-text">
-                <span class="card-title">Pathologie</span>
+                <span class="card-title">Disease</span>
               </div>
               <div class="card-action">
 
                 <div class="row">
                   <div class="col l3"></div>
-                  <a class="col l6 btn-large waves-effect waves-light btn orange"><i class="material-icons left">add</i>Ajouter</a>
+                  <a href="addDisease.jsp" class="col l6 btn-large waves-effect waves-light btn orange"><i class="material-icons left">add</i>Add</a>
                   <div class="col l3"></div>
                 </div>
                 <div class="row">
                   <div class="col l3"></div>
-                  <a class="col l6 btn-large waves-effect waves-light btn orange"><i class="material-icons left">search</i>Chercher</a>
+                  <a href="searchDisease.jsp" class="col l6 btn-large waves-effect waves-light btn orange"><i class="material-icons left">search</i>Search</a>
                   <div class="col l3"></div>
                 </div>
-                
+
               </div>
             </div>
           </div>
         </div>
         </div>
 
-  <%@include file="pied.jsp" %>    
+  <%@include file="pied.jsp" %>
   <script>
-  $('.datepicker').pickadate({
-    format: 'dd/mm/yyyy',
-    date: 'dd/mm/yyyy',
-    selectMonths: true, // Creates a dropdown to control month
-    selectYears: 120, // Creates a dropdown of 15 years to control year,
-    today: 'Aujourd\'hui',
-    clear: 'Effacer',
-    close: 'Valider',
-    closeOnSelect: false, // Close upon selecting a date,
-    monthsFull: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
-    monthsShort: ['Jan', 'Fév', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Octobre', 'Novembre', 'Décembre'],
-    weekdaysShort: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-    weekdaysFull: ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'],
-  });
+
 
   $(document).ready(function(){
     $('.collapsible').collapsible();
