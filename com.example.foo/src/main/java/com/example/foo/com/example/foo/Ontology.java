@@ -7,7 +7,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -15,6 +14,7 @@ import org.semanticweb.owlapi.formats.OWLXMLDocumentFormat;
 import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLDataProperty;
 import org.semanticweb.owlapi.model.OWLDataPropertyAssertionAxiom;
@@ -33,6 +33,7 @@ import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 
 /**
  * This class will represent the DAO of the app HADBPM
+ * 
  * @author lexr
  */
 public class Ontology {
@@ -43,10 +44,12 @@ public class Ontology {
 	private OWLOntology onto = null;
 	private String owlIRI = "";
 	private OWLOntologyManager man = null;
-	
+
 	/**
 	 * Constructor
-	 * @param file The ontology file
+	 * 
+	 * @param file
+	 *            The ontology file
 	 */
 	public Ontology(File file) {
 		// Create the ontology manager
@@ -60,15 +63,20 @@ public class Ontology {
 		// Get the IRI of the owl file
 		owlIRI = onto.getOntologyID().getOntologyIRI().get().toString();
 	}
-	
+
+	/**
+	 * Give the Ontology
+	 * @return The ontology OWLOntology
+	 */
 	public OWLOntology getOntology() {
 		return onto;
 	}
-	
+
 	/**
 	 * Create a reasoner for the ontology
 	 * 
-	 * @param o the ontology on wich the reasoner will compute
+	 * @param o
+	 *            the ontology on wich the reasoner will compute
 	 * @return The settled reasoner
 	 */
 	public OWLReasoner useReasoner(OWLOntology o) {
@@ -84,12 +92,10 @@ public class Ontology {
 
 	}
 
-	
 	/**
 	 * In the ontology get each individual and display for each of them the Object
 	 * property value inferred by the reasoner
 	 * 
-	 * @param onto
 	 * @param reasoner
 	 */
 	public void getAllIndividual(OWLReasoner reasoner) {
@@ -104,17 +110,18 @@ public class Ontology {
 			}
 		}));
 	}
-	
+
 	/**
 	 * In the ontology get each individual and display for each of them the Data
 	 * property value inferred by the reasoner
 	 * 
 	 * @param reasoner
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	public void displayAllIndividualProperties(OWLReasoner reasoner) throws IOException {
 		// Create a file for the property value of an individual
 		File propValue = new File("propertiesValues.txt");
+		@SuppressWarnings("resource")
 		FileWriter propValueWriter = new FileWriter(propValue);
 
 		onto.individualsInSignature().forEach(i -> onto.dataPropertiesInSignature().forEach(p -> {
@@ -142,14 +149,18 @@ public class Ontology {
 			}
 		}));
 	}
-	
+
 	/**
 	 * 
 	 * Display all the individual from a class
 	 * 
 	 * @param reasoner
-	 * @param nameOfOntologyClass the Name of the ontology class in which the indivuals are
+	 * @param nameOfOntologyClass
+	 *            the Name of the ontology class in which the indivuals are
+	 * @return An ArrayList<String> Containing all the individual from a specified
+	 *         class
 	 */
+	@SuppressWarnings("deprecation")
 	public ArrayList<String> getPatientInOntology(OWLReasoner reasoner, String nameOfOntologyClass) {
 		ArrayList<String> liste = new ArrayList<>();
 		onto.classesInSignature().forEach(c -> {
@@ -157,16 +168,16 @@ public class Ontology {
 				patient = c;
 			}
 		});
-		
-		// Display all the individual 
+
+		// Display all the individual
 		for (OWLNamedIndividual cls : reasoner.getInstances(patient).getFlattened()) {
-			//System.out.println(cls.getIRI().getFragment());
+			// System.out.println(cls.getIRI().getFragment());
 			liste.add(cls.getIRI().getFragment().toString());
 		}
-		
+
 		return liste;
 	}
-	
+
 	/**
 	 * Get All the properties for an individual an displays the values
 	 * 
@@ -174,7 +185,9 @@ public class Ontology {
 	 *            Reasoner that will make the inferences
 	 * @param individual
 	 *            The String Name of the Individual
+	 * @return An HashMap<String, String> with the name of the DataProperties and the value for an individual
 	 */
+	@SuppressWarnings("deprecation")
 	public HashMap<String, String> getIndividualProperties(OWLReasoner reasoner, String individual) {
 		HashMap<String, String> properties = new HashMap<>();
 		// Test to retrieve a particular value for a particular individual (WORKING)
@@ -185,28 +198,31 @@ public class Ontology {
 			Set<OWLLiteral> values = asUnorderedSet(individualValues.parallelStream());
 			// Display the property for the individual
 			if (i.getIRI().toString().equals(owlIRI + "#" + individual)) {
-				String head = "The property values for " + p + " for individual " + i + " are: \n";
-				//System.out.println(head);
+				//String head = "The property values for " + p + " for individual " + i + " are: \n";
+				// System.out.println(head);
 				for (OWLLiteral ind : values) {
-					String rs = "\t" + ind + "\n";
-					properties.put(p.getIRI().getFragment().toString(), ind.toString());
-					//System.out.println(rs);
-					//properties.add(p.getIRI().getFragment());
+					//String rs = "\t" + ind + "\n";
+					properties.put(p.getIRI().getFragment().toString(), ind.getLiteral());
+					// System.out.println(rs);
+					// properties.add(p.getIRI().getFragment());
 				}
-				//System.out.println(p);
-				
-				
+				// System.out.println(p);
+
 			}
 		}));
 
 		return properties;
 	}
-	
+
 	/**
-	 * TODO
-	 * @param data the array with all the data that will be inserted in the owl document
+	 * Add all the information
+	 * 
+	 * @param data
+	 *            the array with all the data that will be inserted in the owl
+	 *            document
+	 * @param name The name of the individual to add to the ontology
 	 */
-	public void addPatientIndividual(Object[] data) {
+	public void addPatientIndividual(ArrayList<Info> data, String name) {
 		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLDataFactory df = OWLManager.getOWLDataFactory();
 
@@ -214,51 +230,56 @@ public class Ontology {
 		OWLClass actorIRI = df.getOWLClass(IRI.create(owlIRI + "#Patient"));
 
 		// Patient individual
-		OWLIndividual patient = df.getOWLNamedIndividual(IRI.create(owlIRI + "#Richard"));
+		OWLIndividual patient = df.getOWLNamedIndividual(IRI.create(owlIRI + "#" + name));
+
+		// Create a link between the class patient and the individual
+		OWLClassAssertionAxiom type = df.getOWLClassAssertionAxiom(actorIRI, patient);
+		// Create the axiom corresponding to the link between the patient and the
+		// individual
+		AddAxiom axiomType = new AddAxiom(onto, type);
+		// Add the former link to the ontology
+		manager.applyChange(axiomType);
+
 		// Disease individual
-		OWLIndividual disease = df.getOWLNamedIndividual(owlIRI + "#Anaemia");
-		// Create the property which is already in the owl the name of the patient to the individual
+		OWLIndividual disease = df.getOWLNamedIndividual(owlIRI + "#" + ((Info) data.get(0)).getValue());
+		// Create the property which is already in the owl the name of the patient to
+		// the individual
 		OWLObjectProperty hasDisease = df.getOWLObjectProperty(owlIRI + "#hasDisease");
 		// Link the disease to the patient
-		OWLObjectPropertyAssertionAxiom axiomHasDisease = df.getOWLObjectPropertyAssertionAxiom(hasDisease, patient, disease);
+		OWLObjectPropertyAssertionAxiom axiomHasDisease = df.getOWLObjectPropertyAssertionAxiom(hasDisease, patient,
+				disease);
 		// Create the axiom
 		AddAxiom addAxiomHasDesease = new AddAxiom(onto, axiomHasDisease);
-	    // Apply the axiom to the ontology
-	    manager.applyChange(addAxiomHasDesease);
-	    
-	    
-	    
-	    // Add data Properties to the individual
-	    OWLDataProperty hasAge = df.getOWLDataProperty(IRI.create(owlIRI + "#hasAge"));
-	    // Link the patient to the has Age and the value
-	    OWLDataPropertyAssertionAxiom axiomHasAge = df.getOWLDataPropertyAssertionAxiom(hasAge, patient, 52);
-	    AddAxiom addAxiomHasAge = new AddAxiom(onto, axiomHasAge);
-	    // Apply the changes
-	    manager.applyChange(addAxiomHasAge);
-	    
-	    
-	    
-	    // Save the ontology
-	    try {
-	    	// Create a blank file
-	    	File f = new File("//home//lexr//Documents//testowl.xml");
-	    	// Link the blank file to an IRI
-		    IRI documentIRI = IRI.create(f);
-		    // Save the new ontology
-	    	manager.saveOntology(onto, new OWLXMLDocumentFormat(), documentIRI);
+		// Apply the axiom to the ontology
+		manager.applyChange(addAxiomHasDesease);
+
+		data.remove(data.get(0));
+
+		for (AddAxiom axiom : addDataProperties(data, patient)) {
+			manager.applyChange(axiom);
+		}
+
+		// Save the ontology
+		try {
+			// Create a blank file
+			File f = new File("//home//lexr//Documents//testowl.xml");
+			// Link the blank file to an IRI
+			IRI documentIRI = IRI.create(f);
+			// Save the new ontology
+			manager.saveOntology(onto, new OWLXMLDocumentFormat(), documentIRI);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	    
+
 	}
 
-	
 	/**
 	 * Give all the OWL Classes of the document file
 	 * 
 	 * @return A list with all the Classes that are in the owl file
 	 */
+	@SuppressWarnings("deprecation")
 	public ArrayList<OWLClass> getAllClasses() {
 		ArrayList<OWLClass> list = new ArrayList<>();
 		for (OWLClass cls : onto.getClassesInSignature()) {
@@ -266,12 +287,54 @@ public class Ontology {
 		}
 		return list;
 	}
-	
-	
-	
 
-	
+	/**
+	 * 
+	 */
+	public void getInterventions() {
 
-	
-	
+	}
+
+	/**
+	 * Add all the dataProperties in a list of axioms
+	 * 
+	 * @param data
+	 *            all the dataProperties with their values and type
+	 * @param patient
+	 *            the patient on which the dataProperties are on
+	 * @return the list of axioms to add to the ontology
+	 */
+	public ArrayList<AddAxiom> addDataProperties(ArrayList<Info> data, OWLIndividual patient) {
+		ArrayList<AddAxiom> axioms = new ArrayList<>();
+		OWLDataFactory df = OWLManager.getOWLDataFactory();
+
+		for (Info dp : data) {
+			// Add data Properties to the individual
+			OWLDataProperty hasProp = df.getOWLDataProperty(IRI.create(owlIRI + "#" + dp.getRelation()));
+			OWLDataPropertyAssertionAxiom axiom = null;
+			// Link the patient to the has Age and the value
+			switch (dp.getType()) {
+			case "String":
+				axiom = df.getOWLDataPropertyAssertionAxiom(hasProp, patient, dp.getValue());
+				break;
+			case "int":
+				axiom = df.getOWLDataPropertyAssertionAxiom(hasProp, patient, Integer.parseInt(dp.getValue()));
+				break;
+			case "float":
+				axiom = df.getOWLDataPropertyAssertionAxiom(hasProp, patient, Float.parseFloat(dp.getValue()));
+				break;
+			case "Date":
+				axiom = df.getOWLDataPropertyAssertionAxiom(hasProp, patient, dp.getValue());
+				break;
+			}
+			// Create the axiom to add in the ontology
+			AddAxiom addAxiom = new AddAxiom(onto, axiom);
+
+			// Add to the list
+			axioms.add(addAxiom);
+		}
+
+		return axioms;
+	}
+
 }
