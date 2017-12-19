@@ -92,7 +92,7 @@
                       <option value="Evening">Evening</option>
                       <option value="Night">Night</option>
                     </select>
-                    <label>Frequency</label>
+                    <label>Moment</label>
                   </div>
 
                   <div class="input-field col s1">

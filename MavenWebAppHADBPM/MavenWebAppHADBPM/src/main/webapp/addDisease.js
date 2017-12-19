@@ -77,7 +77,7 @@ $(document).ready(function () {
         renameItem(idInt);
       };
     }
-    
+
     idInt = idInt + 1 ;
 
     if(document.getElementById("action-" + itemSelected)){
@@ -144,7 +144,7 @@ $(document).ready(function () {
     +            '<option value="3">Evening</option>'
     +            '<option value="4">Night</option>'
     +          '</select>'
-    +          '<label>Frequency</label>'
+    +          '<label>Moment</label>'
     +        '</div>'
     +        '<div class="input-field col s1">'
     +          '<input id="duration-' + idInt + '" type="text" class="validate">'
@@ -226,6 +226,8 @@ $(document).ready(function () {
       },
       limit: 5,
       minLength: 0
+    },
+
     });
   };
 

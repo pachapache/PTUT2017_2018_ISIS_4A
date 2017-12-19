@@ -23,10 +23,11 @@ public class SearchDisease extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        // JSON File Creation      
+        // JSON File Creation     
         int cpt = 1;
+        //String diseases = "{";
         String json = "{\n" +
-                "    \"patients\": [\n";
+                "    \"diseases\": [\n";
         
         // Intialisation
         //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
@@ -35,23 +36,25 @@ public class SearchDisease extends HttpServlet {
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
         
-        // Pattern of the patient name
-        String nom = request.getParameter("nom");
-        
-        /**
-         * A list of all the patients
-         */
         ArrayList<String> diseaseList = onto.getPatientInOntology(reasoner, "Disease");
         
-        // Look for a patient begining by the same patern
-        
+        for (String disease : diseaseList) {
+            
+            json += "{\"id\": \"" + cpt + "\",";
+            json +="        \"name\": \""+ disease +"\"\n}";
+            if (!(cpt == diseaseList.size()))
+                    json+=",";
+            cpt++;
+        }
         // Close the json file
-    
+        json += "      ]\n" +
+                "}";
+        //patients += "}";
         System.out.println(json);
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            out.println(diseaseList);
+            out.println(json);
             
         }
         
