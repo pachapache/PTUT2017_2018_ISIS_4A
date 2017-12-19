@@ -44,14 +44,14 @@ public class SearchPatient extends HttpServlet {
                 "    \"patients\": [\n";
         
         // Intialisation
-        //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
-        File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
+        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
+        //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
 
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
         
         // Pattern of the patient name
-        String nom = request.getParameter("nom");
+        //String nom = request.getParameter("nom");
         
         /**
          * A list of all the patients
@@ -61,7 +61,7 @@ public class SearchPatient extends HttpServlet {
         // Look for a patient begining by the same patern
         for (String pat : patienttList) {
             
-            if (pat.contains(nom)) {
+            //if (pat.contains(nom)) {
                 
                 if (cpt > 1) {
                     json += ",";
@@ -71,7 +71,7 @@ public class SearchPatient extends HttpServlet {
                 // Create the object for an individual
 		json += "{\"id\": \"" + cpt + "\",\n";
                 
-                json +="        \"name\": "+ pat +"\n";
+                json +="        \"name\": \""+ pat +"\"\n";
                 patients +="\"name\": "+ pat +"";
                 cpt++;
                 // Close the current individual object
@@ -79,7 +79,7 @@ public class SearchPatient extends HttpServlet {
                     json+="}";
                 
                 
-            }
+            //}
         }
         // Close the json file
         json += "      ]\n" +

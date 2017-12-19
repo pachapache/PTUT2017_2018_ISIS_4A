@@ -30,36 +30,32 @@ public class SearchDisease extends HttpServlet {
                 "    \"diseases\": [\n";
         
         // Intialisation
-        //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
-        File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
+        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
+        //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
 
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
         
-        ArrayList<String> diseaseList = onto.getPatientInOntology(reasoner, "Disease");
+        // Pattern of the patient name
+        //String nom = request.getParameter("nom");
         
-        for (String disease : diseaseList) {
-            
-            json += "{\"id\": \"" + cpt + "\",";
-            json +="        \"name\": \""+ disease +"\"\n}";
-            if (!(cpt == diseaseList.size()))
-                    json+=",";
-            cpt++;
-        }
-        // Close the json file
-        json += "      ]\n" +
-                "}";
-        //patients += "}";
-        System.out.println(json);
+        onto.getInterventions(reasoner,"VesicularPeritonitis");
+        
+        /**
+         * A list of all the patients
+         */
+        HashMap<String, String> actionData = onto.getIndividualProperties(reasoner, "VesicularPeritonitis");
+        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
-            out.println(json);
+         //   out.println(json);
+            for (Map.Entry<String, String> values:actionData.entrySet()) {
+                out.println("Clé : " + values.getKey() + " valeur :" + values.getValue());
+                System.out.println("Clé : " + values.getKey() + " valeur :" + values.getValue());
+            }
             
         }
-        
-        
-        
         
     }
 

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.semanticweb.owlapi.model.OWLClass;
@@ -33,8 +34,8 @@ public class App {
 		// File file = new File("d:\\Users\\admin\\Desktop\\cours\\ptut\\HCO.owl");
 		// File file = new
 		// File("//home//lexr//Dropbox//Ontoflow//CodeSabrina//Ontologies//HCBPMNOntology//HCO.owl");
-		//File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
-                File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
+		File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
+                //File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
 
 
 		System.out.println("\t\t\tAffiche les classes du document");
@@ -132,6 +133,15 @@ public class App {
 		
 		// Add the patient to the ontology
 		onto.addPatientIndividual(infos, "Remi");
+                
+                
+                HashMap<String, String> actionData = onto.getIndividualProperties(reasoner, "VesicularPeritonitis");
+                System.out.println("liste des dataproperties de vesicular peritonitis");
+                for (Map.Entry<String, String> values:actionData.entrySet()) {
+                    
+                    System.out.println("Clé : " + values.getKey() + " valeur :" + values.getValue());
+                }
+                
 	
 	}
 	
