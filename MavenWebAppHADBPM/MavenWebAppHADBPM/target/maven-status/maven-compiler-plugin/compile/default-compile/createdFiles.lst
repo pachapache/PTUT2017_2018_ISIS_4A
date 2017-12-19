@@ -1,7 +1,6 @@
-com/example/foo/com/example/foo/query$DLQueryEngine.class
-com/mycompany/mavenwebapphadbpm/Ontology.class
-com/mycompany/mavenwebapphadbpm/App.class
-com/example/foo/com/example/foo/query$DLQueryPrinter.class
-com/mycompany/mavenwebapphadbpm/Info.class
-com/example/foo/com/example/foo/query.class
-com/example/foo/com/example/foo/query$DLQueryParser.class
+com\mycompany\mavenwebapphadbpm\InfoPatient.class
+com\mycompany\mavenwebapphadbpm\Info.class
+com\mycompany\mavenwebapphadbpm\Ontology.class
+com\mycompany\mavenwebapphadbpm\SearchDisease.class
+com\mycompany\mavenwebapphadbpm\App.class
+com\mycompany\mavenwebapphadbpm\SearchPatient.class

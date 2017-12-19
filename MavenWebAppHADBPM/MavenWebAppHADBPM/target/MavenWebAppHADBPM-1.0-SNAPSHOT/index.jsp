@@ -2,9 +2,10 @@
 
   <div class="row">
     <div class="container">
+      <h2 class="center"> WELCOME ! </h2>
           <div class="col s12 m6">
-            <div class="card brown lighten-3" style="border: 1px solid #ff9800;">
-              <div class="card-content white-text" style="border-color:#ff9800; border-width: 0px 0px 1px 0px; border-style: solid;">
+            <div class="card brown lighten-3" >
+              <div class="card-content white-text" >
                 <span class="card-title">Patient </span>
               </div>
               <div class="card-action">

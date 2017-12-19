@@ -8,9 +8,17 @@
         <servlet-name>InfoPatient</servlet-name>
         <servlet-class>com.mycompany.mavenwebapphadbpm.InfoPatient</servlet-class>
     </servlet>
+        <servlet>
+        <servlet-name>SearchDisease</servlet-name>
+        <servlet-class>com.mycompany.mavenwebapphadbpm.SearchDisease</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SearchPatient</servlet-name>
         <url-pattern>/SearchPatient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchDisease</servlet-name>
+        <url-pattern>/SearchDisease</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>InfoPatient</servlet-name>

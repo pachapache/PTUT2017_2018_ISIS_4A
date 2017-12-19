@@ -6,7 +6,7 @@ $(document).ready(function(){
         $('.card').each(function() {
             $(this).click(function(){
                 if ($(this).attr('id') == 'ajoutPat') {
-                    window.location.assign('addPatient.html');
+                    window.location.assign('addPatient.jsp');
                 } else {
                     //alert("Hauteur : " + this.clientHeight + " Largeur : " + this.clientWidth);
                     var haut =($(window).height()/2)-($('#info_3').height()/2);
@@ -17,10 +17,10 @@ $(document).ready(function(){
 
                     // Style de l'arrière plan lors du clic sur une card
                     var styleCSS = {'z-index' : '10' ,'position':'fixed', 'background-color' : 'grey', 'opacity' : '0.65', 'left' : '0px', 'top' : '0px', 'bottom' : '0px', 'right' : '0px'};
-                    
+
                     // Style à appliquer aux informations appartenant au patient
                     var styleCSS2 = {'z-index' : '15', 'position' : 'fixed', 'top' : haut +'px', 'left' : gauche +'px', 'width' : '70%'};
-                    
+
                     // Affiche un plan transparent à 65%
                     $(this).children('.back-info').toggle();
                     $(this).children('.back-info').children('.info').toggle();
@@ -31,27 +31,26 @@ $(document).ready(function(){
                 }
             });
         });
-        
+
         var autocomplete = function(input) {
-            console.log('passage dans la fonction qui fait tout');
-            console.log(input);
             $.ajax({
                 url:'SearchPatient',
                 data : {nom : input},
                 method: 'GET',
-                success: function(data) {   
+                success: function(data) {
+                    console.log(data)
                     var id = 0;
                     // datatable for the autocomplete
                     var tab = '{';
-                    
+
                     for (id; id < data.length; id++) {
                         if (id>0) {
                             tab += ',';
                         }
                         tab +="\""+ data[i].name +"\": null";
-                        
+
                         // Changes the cards
-                        var card = '<div class="col s12 m3">' + 
+                        var card = '<div class="col s12 m3">' +
                                         '<div id="pat-' + id + '" class="card">' +
                                             '<div class="card-image">' +
                                                 '<img src="images/sample-1.jpg" height="100">' +
@@ -70,30 +69,30 @@ $(document).ready(function(){
                                                 '</div>' +
                                         '</div>' +
                                     '</div>';
-                        
-                        
-                        
-                        
 
-                    }                    
-                    
+
+
+
+
+                    }
+
                     $('input.autocomplete').autocomplete({
                             data: tab,
                             limit: 10, // The max amount of results that can be shown at once. Default: Infinity.
 
-                            minLength: 1 // The minimum length of the input for the autocomplete to start. Default: 1.
+                            minLength: 0 // The minimum length of the input for the autocomplete to start. Default: 1.
                         });
                 }, dataType:'json'
             });
-            
+
         };
-        
+
         // Define the content of the autocomplete dynamicaly
         $("#autocomplete-input").on('input',function(){
             // Show the corresponding patient to pattern given
             autocomplete($("#autocomplete-input").val());
-            // Display the result on the cards 
-            
+            // Display the result on the cards
+
         });
-        
+
 });

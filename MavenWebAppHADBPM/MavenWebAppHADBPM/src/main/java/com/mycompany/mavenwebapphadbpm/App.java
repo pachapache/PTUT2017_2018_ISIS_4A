@@ -33,7 +33,8 @@ public class App {
 		// File file = new File("d:\\Users\\admin\\Desktop\\cours\\ptut\\HCO.owl");
 		// File file = new
 		// File("//home//lexr//Dropbox//Ontoflow//CodeSabrina//Ontologies//HCBPMNOntology//HCO.owl");
-		File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl");
+		//File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //Alexandre
+                File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
 
 
 		System.out.println("\t\t\tAffiche les classes du document");
@@ -41,7 +42,7 @@ public class App {
 		//OWLClass acteur = null;	
 		
 		Ontology onto = new Ontology(file);
-		
+         
 		OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
 			
 		// WORKING !!!!

@@ -42,7 +42,9 @@ public class InfoPatient extends HttpServlet {
                 "    \"patients\": [\n";
         
         // Intialisation
-        File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl");
+        //File file = new File("//home//lexr//Documents//4A//S1//PTUT//HCO.owl"); //ALEXANDRE
+        File file = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
+
         Ontology onto = new Ontology(file);
         OWLReasoner reasoner = onto.useReasoner(onto.getOntology());
         
