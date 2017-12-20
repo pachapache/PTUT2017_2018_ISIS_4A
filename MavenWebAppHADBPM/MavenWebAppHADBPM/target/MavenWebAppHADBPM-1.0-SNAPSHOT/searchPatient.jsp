@@ -72,7 +72,7 @@
 
 
 <%@include file="pied.jsp" %>
-    <script type="text/javascript" src="anim.js"></script>
+    <script type="text/javascript" src="searchPatient.js"></script>
 
 </body>
 
