@@ -137,15 +137,14 @@ public class App {
                 
                 HashMap<String, String> actionData = onto.getIndividualProperties(reasoner, "VesicularPeritonitis");
                 System.out.println("liste des dataproperties de vesicular peritonitis");
-                for (Map.Entry<String, String> values:actionData.entrySet()) {
-                    
+                for (Map.Entry<String, String> values:actionData.entrySet()) {    
                     System.out.println("Clé : " + values.getKey() + " valeur :" + values.getValue());
                 }
+                // Test de l'application pour 
+                System.out.println("Affichage des dataproperties pour vesicular avec la fonction test");
+                onto.test(reasoner, "VesicularPeritonitis");
                 
-	
-	}
-	
-	
+        }	
 
 	
 

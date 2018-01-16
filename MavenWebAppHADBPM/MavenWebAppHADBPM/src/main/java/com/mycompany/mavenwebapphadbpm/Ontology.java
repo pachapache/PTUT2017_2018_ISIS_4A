@@ -252,9 +252,9 @@ public class Ontology {
 		OWLObjectPropertyAssertionAxiom axiomHasDisease = df.getOWLObjectPropertyAssertionAxiom(hasDisease, patient,
 				disease);
 		// Create the axiom
-		AddAxiom addAxiomHasDesease = new AddAxiom(onto, axiomHasDisease);
+		AddAxiom addAxiomHasDisease = new AddAxiom(onto, axiomHasDisease);
 		// Apply the axiom to the ontology
-		manager.applyChange(addAxiomHasDesease);
+		manager.applyChange(addAxiomHasDisease);
 
 		data.remove(data.get(0));
 
@@ -295,26 +295,69 @@ public class Ontology {
 
 	/**
 	 * Display all the interventions for a disease
+         * @param reasoner
+         * @param disease
 	 */
 	public void /*HashMap<String, String> */ getInterventions(OWLReasoner reasoner, String disease) {
             OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLDataFactory df = OWLManager.getOWLDataFactory();
-            System.out.println("Affichage des interventions pour une maladie");
+            System.out.println("Affichage des interventions pour une maladie \n\n\n");
             
             onto.individualsInSignature().forEach(i -> onto.objectPropertiesInSignature().forEach(p -> {
                 NodeSet<OWLNamedIndividual> individualValues = reasoner.getObjectPropertyValues(i, p);
                 Set<OWLNamedIndividual> values = asUnorderedSet(individualValues.entities());
                 if (i.getIRI().toString().equals(owlIRI + "#" + disease)) {
-                    System.out.println("The property values for "+p+" for individual "+i+" are: ");
+                    System.out.println("The property values for "+p.getIRI().getRemainder()+" for individual "+i.getIRI().getRemainder()+" are: ");
                     for (OWLNamedIndividual ind : values) {
-                        System.out.println(" " + ind);
+                        System.out.println(" " + ind.getIRI().getRemainder() + ".");
+                        NodeSet<OWLNamedIndividual> indV = reasoner.getObjectPropertyValues(ind, p);
+                        Set<OWLNamedIndividual> val = asUnorderedSet(indV.entities());
+                        for (OWLNamedIndividual id : val) {
+                            System.out.println(" " + ind.getIRI().getRemainder());
+                        }
+                        
                     }
                 }
                 
             }));
-            
 		
 	}
+        
+        public void /*HashMap<String,ArrayList<String>>*/ test(OWLReasoner reasoner, String ind) {
+            HashMap<String,ArrayList<String>> obj = null;
+            ArrayList<String> test = null;
+            
+            OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+		OWLDataFactory df = OWLManager.getOWLDataFactory();
+            //System.out.println("Affichage des interventions pour une maladie \n\n\n");
+            
+            onto.individualsInSignature().forEach(i -> onto.objectPropertiesInSignature().forEach(p -> {
+                NodeSet<OWLNamedIndividual> individualValues = reasoner.getObjectPropertyValues(i, p);
+                Set<OWLNamedIndividual> values = asUnorderedSet(individualValues.entities());
+                if (i.getIRI().toString().equals(owlIRI + "#" + ind)) {
+                    System.out.println("The property values for "+p.getIRI().getRemainder()+" for individual "+i.getIRI().getRemainder()+" are: ");
+                    //obj.put(p.getIRI().getRemainder().toString(), i.getIRI().getRemainder().toString());
+                    
+                    for (OWLNamedIndividual indi : values) {
+                        System.out.println(" " + indi.getIRI().getRemainder() + ".");
+                        NodeSet<OWLNamedIndividual> indV = reasoner.getObjectPropertyValues(indi, p);
+                        Set<OWLNamedIndividual> val = asUnorderedSet(indV.entities());
+                        
+                        test(reasoner, indi.getIRI().getFragment().toString());
+                    }
+                    
+                }
+                
+                
+                
+            }));
+            
+            
+            
+            
+            //return obj;
+            
+        }
 
 	/**
 	 * Add all the dataProperties in a list of axioms

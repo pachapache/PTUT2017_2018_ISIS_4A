@@ -226,8 +226,6 @@ $(document).ready(function () {
       },
       limit: 5,
       minLength: 0
-    },
-
     });
   };
 

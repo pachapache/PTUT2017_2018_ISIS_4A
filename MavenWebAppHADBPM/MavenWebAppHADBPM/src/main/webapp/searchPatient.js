@@ -1,9 +1,8 @@
 $(document).ready(function () {
 
     var cards = document.getElementsByClassName("card");
-
-
-// Créé la carte d'un patient
+    
+    // Créé la carte d'un patient
     var card = function (id, pat) {
         // the card
         var c = '<div class="pat col s12 m3">' +
@@ -139,6 +138,7 @@ $(document).ready(function () {
             }
 
         });
+        clic();
     });
 
     // Initialise the collapsible

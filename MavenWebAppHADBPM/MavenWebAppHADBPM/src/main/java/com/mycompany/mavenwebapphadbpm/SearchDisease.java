@@ -45,7 +45,6 @@ public class SearchDisease extends HttpServlet {
          * A list of all the patients
          */
         HashMap<String, String> actionData = onto.getIndividualProperties(reasoner, "VesicularPeritonitis");
-        
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
 
@@ -54,7 +53,7 @@ public class SearchDisease extends HttpServlet {
                 out.println("Clé : " + values.getKey() + " valeur :" + values.getValue());
                 System.out.println("Clé : " + values.getKey() + " valeur :" + values.getValue());
             }
-            
+//            
         }
         
     }

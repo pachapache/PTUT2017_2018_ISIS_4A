@@ -8,9 +8,13 @@
         <servlet-name>InfoPatient</servlet-name>
         <servlet-class>com.mycompany.mavenwebapphadbpm.InfoPatient</servlet-class>
     </servlet>
-        <servlet>
+    <servlet>
         <servlet-name>SearchDisease</servlet-name>
         <servlet-class>com.mycompany.mavenwebapphadbpm.SearchDisease</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddPatient</servlet-name>
+        <servlet-class>com.mycompany.mavenwebapphadbpm.AddPatient</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>SearchPatient</servlet-name>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>InfoPatient</servlet-name>
         <url-pattern>/InfoPatient</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddPatient</servlet-name>
+        <url-pattern>/AddPatient</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
