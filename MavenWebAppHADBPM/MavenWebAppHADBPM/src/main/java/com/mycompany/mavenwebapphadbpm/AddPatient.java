@@ -83,6 +83,6 @@ public class AddPatient extends HttpServlet {
         return "Short description";
     }// </editor-fold>
     
-    System.println("bouh");
+    System.out.println("bouh");
 
 }
