@@ -266,7 +266,7 @@ public class Ontology {
 		try {
 			// Create a blank file
 			//File f = new File("//home//lexr//Documents//testowl.xml"); //Alexandre
-                        File f = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
+                        File f = new File("HCO.owl");
 
 			// Link the blank file to an IRI
 			IRI documentIRI = IRI.create(f);
