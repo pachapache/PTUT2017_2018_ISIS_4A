@@ -21,26 +21,26 @@
               <div class="collapsible-body">
                 <div class="row">
                   <div class="input-field col s4">
-                    <input id="hasLastName" type="text" class="validate" required="true">
-                    <label>Name</label>
+                    <input name="LastName" id="hasLastName" type="text" class="validate" required="true">
+                    <label>Last Name</label>
                   </div>
 
                   <div class="input-field col s4">
-                    <input id="hasFirstName" type="text" class="validate" required="true">
+                    <input name ="FirstName" id="hasFirstName" type="text" class="validate" required="true">
                     <label>First name</label>
                   </div>
 
                   <div class="input-field col s4">
-                    <select id="hasSex">
+                    <select name=sexe" id="hasSex">
                       <option value="" disabled selected>Sexe</option>
-                      <option value="1">Male</option>
-                      <option value="2">Female</option>
+                      <option value="1" >Male</option>
+                      <option value="2" >Female</option>
                     </select>
                   </div>
 
                   <div class="input-field col s3">
                     <i class="material-icons prefix">today</i>
-                    <input id="hasDateOfBirth" type="text" class="datepicker" required="true">
+                    <input name="dob" id="hasDateOfBirth" type="text" class="datepicker" required="true" max="2019-01-01" min="1900-12-31">
                     <label>Date of birth</label>
                   </div>
 
@@ -49,37 +49,37 @@
                   </div>
 
                   <div class="input-field col s8">
-                    <input id="hasPlaceOfBirth" type="text" class="validate" required="true">
+                    <input name="pob" id="hasPlaceOfBirth" type="text" class="validate" required="true">
                     <label>Place of birth</label>
                   </div>
 
                   <div class="input-field col s4">
                     <i class="material-icons prefix">add_circle</i>
-                    <input id="hasSocialSecurityNumber" type="text" class="validate" required="true">
+                    <input name="socialSecurityNumber" id="hasSocialSecurityNumber" type="text" class="validate" required="true">
                     <label>Social Security Number</label>
                   </div>
 
                   <div class="input-field col s8">
                     <i class="material-icons prefix">location_on</i>
-                    <input id="hasAdress" type="text" class="validate" required="true">
+                    <input name="adress" id="hasAdress" type="text" class="validate" required="true">
                     <label>Adress</label>
                   </div>
 
                   <div class="input-field col s6">
                     <i class="material-icons prefix">phone</i>
-                    <input id="hasPhoneNumber" type="tel" class="validate">
+                    <input name="phoneNumber" id="hasPhoneNumber" type="tel" class="validate">
                     <label>Phone number</label>
                   </div>
 
                   <div class="input-field col s6">
                     <i class="material-icons prefix">email</i>
-                    <input id="hasEmail" type="email" class="validate">
+                    <input name="email" id="hasEmail" type="email" class="validate">
                     <label>Email</label>
                   </div>
 
                   <div class="input-field col s6">
                     <i class="material-icons prefix">add_circle</i>
-                    <select id="hasMaritalStatus">
+                    <select name="marital" id="hasMaritalStatus">
                       <option value="" disabled selected>Marital status</option>
                       <option value="1">Single</option>
                       <option value="2">Married</option>
@@ -96,7 +96,7 @@
                     <div class="switch" style="display: inline-block">
                       <label>
                         No
-                        <input id="hasInternetAccess" type="checkbox">
+                        <input name=internet" id="hasInternetAccess" type="checkbox">
                         <span class="lever"></span>
                         Yes
                       </label>
@@ -114,25 +114,25 @@
 
                   <div class="input-field col s6">
                     <i class="material-icons prefix">accessibility</i>
-                    <input id="hasSize" type="text" class="validate">
+                    <input name=size" id="hasSize" type="text" class="validate">
                     <label>Size</label>
                   </div>
 
                   <div class="input-field col s6">
                     <i class="material-icons prefix">linear_scale</i>
-                    <input id="hasWeight" type="text" class="validate">
+                    <input name="weight" id="hasWeight" type="text" class="validate">
                     <label>Weight</label>
                   </div>
 
                   <div class="input-field col s6">
                     <i class="material-icons prefix">add_circle</i>
-                    <input id="hasAllergies" type="text" class="validate">
+                    <input name="allergies" id="hasAllergies" type="text" class="validate">
                     <label>Allergies</label>
                   </div>
 
                   <div class="input-field col s6">
                     <i class="material-icons prefix">add_circle</i>
-                    <select id="hasDisease" multiple>
+                    <select name="disease" id="hasDisease" multiple>
                       <option value="" disabled selected>Disease</option>
                       <option value="1">Anaemia</option>
                       <option value="2">Arthritis</option>
@@ -142,7 +142,7 @@
 
                   <div class="input-field col s6">
                     <i class="material-icons prefix">add_circle</i>
-                    <input id="hasPrevious" type="text" class="validate">
+                    <input name="previous" id="hasPrevious" type="text" class="validate">
                     <label>Previous</label>
                   </div>
 
@@ -152,7 +152,7 @@
                     <div class="switch" style="display: inline-block">
                       <label>
                         No
-                        <input id="hasValidEntourage" type="checkbox">
+                        <input name="entourage" id="hasValidEntourage" type="checkbox">
                         <span class="lever"></span>
                         Yes
                       </label>
@@ -165,7 +165,7 @@
                     <div class="switch" style="display: inline-block">
                       <label>
                         No
-                        <input id="hasAccessiblePlace" type="checkbox">
+                        <input name="place" id="hasAccessiblePlace" type="checkbox">
                         <span class="lever"></span>
                         Yes
                       </label>
@@ -180,7 +180,7 @@
               <div class="collapsible-body">
                 <div class="row">
                   <div class="input-field col s12">
-                    <textarea id="hasNotes" id="icon_prefix2" class="materialize-textarea"></textarea>
+                    <textarea name="note" id="hasNotes" id="icon_prefix2" class="materialize-textarea"></textarea>
                     <label>Note</label>
                   </div>
                 </div>
