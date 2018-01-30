@@ -21,12 +21,12 @@
               <div class="collapsible-body">
                 <div class="row">
                   <div class="input-field col s4">
-                    <input name="LastName" id="hasLastName" type="text" class="validate" required="true">
+                    <input name="lastName" id="hasLastName" type="text" class="validate" required="true">
                     <label>Last Name</label>
                   </div>
 
                   <div class="input-field col s4">
-                    <input name ="FirstName" id="hasFirstName" type="text" class="validate" required="true">
+                    <input name ="firstName" id="hasFirstName" type="text" class="validate" required="true">
                     <label>First name</label>
                   </div>
 
@@ -61,7 +61,7 @@
 
                   <div class="input-field col s8">
                     <i class="material-icons prefix">location_on</i>
-                    <input name="adress" id="hasAdress" type="text" class="validate" required="true">
+                    <input name="address" id="hasAddress" type="text" class="validate" required="true">
                     <label>Adress</label>
                   </div>
 
