@@ -142,10 +142,13 @@ public class App {
                 }
                 // Test de l'application pour 
                 System.out.println("Affichage des dataproperties pour vesicular avec la fonction test");
-                onto.test(reasoner, "VesicularPeritonitis");
+                //onto.test(reasoner, "VesicularPeritonitis");
+                onto.bouclesVersInfiniAudela(reasoner, "VesicularPeritonitis");
                 
         }	
 
 	
+        
+        
 
 }

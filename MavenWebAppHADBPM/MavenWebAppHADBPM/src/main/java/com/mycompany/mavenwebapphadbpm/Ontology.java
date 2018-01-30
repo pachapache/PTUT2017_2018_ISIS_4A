@@ -265,8 +265,8 @@ public class Ontology {
 		// Save the ontology
 		try {
 			// Create a blank file
-			//File f = new File("//home//lexr//Documents//testowl.xml"); //Alexandre
-                        File f = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
+			File f = new File("//home//lexr//Documents//testowl.xml"); //Alexandre
+                        //File f = new File("C:\\Users\\Pauline\\Dropbox\\Ontoflow\\CodeSabrina\\Ontologies\\HCBPMNOntology\\HCO.owl");
 
 			// Link the blank file to an IRI
 			IRI documentIRI = IRI.create(f);
@@ -329,7 +329,9 @@ public class Ontology {
             
             OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
 		OWLDataFactory df = OWLManager.getOWLDataFactory();
-            //System.out.println("Affichage des interventions pour une maladie \n\n\n");
+            //System.out.println("Affichage des interventions pour une maladie \n\n\n");   
+            //onto.objectPropertyRangeAxioms(p);
+            //onto.dataPropertyDomainAxioms(p);
             
             onto.individualsInSignature().forEach(i -> onto.objectPropertiesInSignature().forEach(p -> {
                 NodeSet<OWLNamedIndividual> individualValues = reasoner.getObjectPropertyValues(i, p);
@@ -344,20 +346,44 @@ public class Ontology {
                         Set<OWLNamedIndividual> val = asUnorderedSet(indV.entities());
                         
                         test(reasoner, indi.getIRI().getFragment().toString());
-                    }
-                    
-                }
-                
-                
-                
-            }));
-            
-            
-            
-            
-            //return obj;
-            
+                    }           
+                }       
+            }));   
+            //return obj;   
         }
+        
+        
+        public void /*HashMap<String,ArrayList<String>>*/ bouclesVersInfiniAudela(OWLReasoner reasoner, String ind) {
+            HashMap<String,ArrayList<String>> obj = null;
+            ArrayList<String> test = null;
+            
+            OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+            OWLDataFactory df = OWLManager.getOWLDataFactory();
+                
+            //System.out.println("Affichage des interventions pour une maladie \n\n\n");
+            //onto.objectPropertyRangeAxioms(p);
+            //onto.dataPropertyDomainAxioms(p);
+            
+            
+            onto.individualsInSignature().forEach(i -> onto.objectPropertiesInSignature().forEach(p -> {
+                NodeSet<OWLNamedIndividual> individualValues = reasoner.getObjectPropertyValues(i, p);
+                Set<OWLNamedIndividual> values = asUnorderedSet(individualValues.entities());
+                if (i.getIRI().toString().equals(owlIRI + "#" + ind)) {
+                    System.out.println("The property values for "+p.getIRI().getRemainder()+" for individual "+i.getIRI().getRemainder()+" are: ");
+                    //obj.put(p.getIRI().getRemainder().toString(), i.getIRI().getRemainder().toString());
+
+                    for (OWLNamedIndividual indi : values) {
+                        
+                        System.out.println(indi);
+                        
+                    }
+                }
+            }));
+            //return obj;    
+        }
+        
+        
+        
 
 	/**
 	 * Add all the dataProperties in a list of axioms
