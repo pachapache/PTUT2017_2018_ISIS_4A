@@ -46,8 +46,7 @@ public class AddPatient extends HttpServlet {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date date1 = sdf.parse(request.getParameter("dob"));
         java.sql.Date dob = new java.sql.Date(date1.getTime());
-        //String strDate = dateFormat.format(date);  
-
+        String dobS = String.valueOf(dob);            // convert dateOfBirth in String 
         String pob = request.getParameter("pob");
         String socialSecurityNumber = request.getParameter("socialSecurityNumber");     //better    // int socialSecurityNumber = Integer.parseInt(request.getParameter("socialSecurityNumber"));
         String address = request.getParameter("address");
@@ -79,7 +78,7 @@ public class AddPatient extends HttpServlet {
         Info LastName = new Info("hasLastName", lastName, "String"); // hasName
         Info FirstName = new Info("hasFirstName", firstName, "String");// hasFirstName
         Info Sex = new Info("hasSex", sex, "String");// hasSex
-        
+        Info Dob = new Info("hasSex", dobS, "String");// hasDateOfBirth
         Info Pob = new Info("hasPlaceOfBirth", pob, "String"); // hasPlaceOfBirth
 	Info SocialSecurityNumber = new Info("hasSocialSecurityNumber", socialSecurityNumber, "String"); // hasSocialSecurityNumber
         Info Address = new Info("hasAddress", address, "String");// hasAddress
@@ -95,31 +94,32 @@ public class AddPatient extends HttpServlet {
         Info Entourage = new Info("Disease", entourage, "String");// hasValidEntourage
         Info Place = new Info("Disease", place, "String");// hasAccessiblePlace
         Info Note = new Info("Disease", note, "String");// hasNotes
-
-		ArrayList<Info> infos = new ArrayList<>();
-		infos.add(disease);
-		infos.add(address);
-		infos.add(allergies);
-		infos.add(bmi);
-		infos.add(dateOfBirth);
-		infos.add(dateOfAd);
-		infos.add(dateOfDischarge);
-		infos.add(email);
-		infos.add(firstName);
-		infos.add(name);
-		//infos.add(phoneNumber);
-		infos.add(placeOfBirth);
-		infos.add(sex);
-		infos.add(size);
-		infos.add(socialSecurityNumber);	
-		infos.add(weight);
-		//infos.add(numberId);
-		infos.add(maritalStatus);
+        
+        //Create ArrayList to insert in the file ontology
+	ArrayList<Info> infos = new ArrayList<>();
+	infos.add(LastName);
+	infos.add(FirstName);
+	infos.add(Sex);
+	infos.add(Dob);
+	infos.add(Pob);
+	infos.add(SocialSecurityNumber);
+	infos.add(Address);
+	infos.add(PhoneNumber);
+	infos.add(Email);
+	infos.add(Marital);
+	infos.add(Internet);
+	infos.add(Size);
+	infos.add(Weight);
+	infos.add(Allergies);
+	infos.add(Disease);	
+	infos.add(Previous);
+	infos.add(Entourage);
+	infos.add(Place);
+        infos.add(Note);
 		
-		// Add the patient to the ontology
-		onto.addPatientIndividual(infos, lastName);
+	// Add the patient to the ontology
+        onto.addPatientIndividual(infos, lastName);
        
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
