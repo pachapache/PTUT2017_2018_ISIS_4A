@@ -1,15 +1,19 @@
 package Model;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Intervention {
 
     private String name;
     private String typeActor;
     private int duration;
     private UnityTime unityDuration;
-    private int frequency;
+    private String frequency;
     private UnityTime unityFrequency;
     private TimeDay timeDay;
     private HomeCareStructure homeCareStructure;
+    private ArrayList<String> moment; // Choix discutable
 
     public String getName() {
         return name;
@@ -43,11 +47,11 @@ public class Intervention {
         this.unityDuration = unityDuration;
     }
 
-    public int getFrequency() {
+    public String getFrequency() {
         return frequency;
     }
 
-    public void setFrequency(int frequency) {
+    public void setFrequency(String frequency) {
         this.frequency = frequency;
     }
 
@@ -75,7 +79,22 @@ public class Intervention {
         this.homeCareStructure = homeCareStructure;
     }
 
-    public Intervention(String name, String typeActor, int duration, UnityTime unityDuration, int frequency, UnityTime unityFrequency, TimeDay timeDay, HomeCareStructure homeCareStructure) {
+    public void setMoment(ArrayList<String> moment) {
+        this.moment = moment;
+    }
+    
+    public ArrayList<String> getMoment() {
+        if (moment == null ) {
+            this.moment = new ArrayList<>();
+        }
+        return this.moment;
+    }
+    
+    public Intervention(String name) {
+        this.name = name;
+    }
+    
+    public Intervention(String name, String typeActor, int duration, UnityTime unityDuration, String frequency, UnityTime unityFrequency, TimeDay timeDay, HomeCareStructure homeCareStructure, ArrayList<String> moment) {
         this.name = name;
         this.typeActor = typeActor;
         this.duration = duration;
@@ -84,6 +103,15 @@ public class Intervention {
         this.unityFrequency = unityFrequency;
         this.timeDay = timeDay;
         this.homeCareStructure = homeCareStructure;
+        this.moment = moment;
     }
 
+    @Override
+    public String toString() {
+        return "Intervention{" + "name=" + name + ", typeActor=" + typeActor + ", duration=" + duration + ", unityDuration=" + unityDuration + ", frequency=" + frequency + ", unityFrequency=" + unityFrequency + ", timeDay=" + timeDay + ", homeCareStructure=" + homeCareStructure + ", moment=" + moment + '}';
+    }
+    
+    
+    
+    
 }

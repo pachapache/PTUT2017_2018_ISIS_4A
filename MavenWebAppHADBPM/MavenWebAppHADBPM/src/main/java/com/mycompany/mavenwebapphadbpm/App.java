@@ -55,10 +55,11 @@ public class App {
 			System.out.println(cls.getIRI().getRemainder().get());
 		}
 		
-		ArrayList<String> liste = onto.getPatientInOntology(reasoner, "Patient");
+		//ArrayList<String> liste = onto.getPatientInOntology(reasoner, "Patient");
 		// Affiche toutes les propriétés d'un patient
 		System.out.println("\t\t\tListes des propriétés d'un patient (Joelle)");
-		for (String patient : liste) {
+		/*
+                for (String patient : liste) {
 			System.out.println(patient);
 			//if (patient) {
 				HashMap<String, String> propMap = onto.getIndividualProperties(reasoner, patient);
@@ -72,7 +73,7 @@ public class App {
 				}
 			//}
 			
-		}
+		}*/
 		
 		// WORKING !!!! Insert a new patient in the ontology
 		Info disease = new Info("Disease", "Undernutrition", "");
@@ -134,7 +135,7 @@ public class App {
 		// Add the patient to the ontology
 		onto.addPatientIndividual(infos, "Remi");
                 
-                
+                /*
                 HashMap<String, String> actionData = onto.getIndividualProperties(reasoner, "VesicularPeritonitis");
                 System.out.println("liste des dataproperties de vesicular peritonitis");
                 for (Map.Entry<String, String> values:actionData.entrySet()) {    
@@ -143,6 +144,10 @@ public class App {
                 // Test de l'application pour 
                 System.out.println("Affichage des dataproperties pour vesicular avec la fonction test");
                 onto.test(reasoner, "VesicularPeritonitis");
+                */
+                
+                System.out.println("Essai de la nouvelle fonction pour l'interface searchPatient.jsp");
+                onto.getPatientInOntology(reasoner, "Patient");
                 
         }	
 

@@ -1,5 +1,8 @@
 package com.mycompany.mavenwebapphadbpm;
 
+import Model.MaritalStatus;
+import Model.Patient;
+import Model.Sexe;
 import static org.semanticweb.owlapi.util.OWLAPIStreamUtils.asUnorderedSet;
 
 import java.io.File;
@@ -166,8 +169,9 @@ public class Ontology {
 	 * @return An ArrayList<String> Containing all the individual from a specified
 	 *         class
 	 */
-	public ArrayList<String> getPatientInOntology(OWLReasoner reasoner, String nameOfOntologyClass) {
-		ArrayList<String> liste = new ArrayList<>();
+	public ArrayList<Patient> getPatientInOntology(OWLReasoner reasoner, String nameOfOntologyClass) {
+                ArrayList<Patient> pats = new ArrayList<>();
+		//ArrayList<String> liste = new ArrayList<>();
 		onto.classesInSignature().forEach(c -> {
 			if (c.getIRI().getFragment().equals(nameOfOntologyClass)) {
 				patient = c;
@@ -176,10 +180,14 @@ public class Ontology {
 
 		// Display all the individual
 		for (OWLNamedIndividual cls : reasoner.getInstances(patient).getFlattened()) {
-			liste.add(cls.getIRI().getRemainder().get());
-		}
+                    //liste.add(cls.getIRI().getRemainder().get());
+                    //pats.add()
 
-		return liste;
+                    //System.out.println("cls : " + cls.getIRI().getRemainder().get());
+                    pats.add(searchPatient(cls.getIRI().getRemainder().get(), reasoner));
+		}
+                
+		return pats;
 	}
 
 	/**
@@ -204,10 +212,10 @@ public class Ontology {
 				//String head = "The property values for " + p + " for individual " + i + " are: \n";
 				// System.out.println(head);
 				for (OWLLiteral ind : values) {
-					//String rs = "\t" + ind + "\n";
-                                        properties.put(p.getIRI().getRemainder().get(), ind.getLiteral());
-					// System.out.println(rs);
-					// properties.add(p.getIRI().getFragment());
+                                    //String rs = "\t" + ind + "\n";
+                                    properties.put(p.getIRI().getRemainder().get(), ind.getLiteral());
+                                    // System.out.println(rs);
+                                    // properties.add(p.getIRI().getFragment());
 				}
 				// System.out.println(p);
 
@@ -216,6 +224,33 @@ public class Ontology {
 
 		return properties;
 	}
+        
+        
+        public Patient searchPatient(String id, OWLReasoner reasoner) {
+            Patient pat = new Patient();
+            onto.individualsInSignature().forEach(i -> onto.dataPropertiesInSignature().forEach(p -> {
+                if (i.getIRI().getRemainder().get().equals(id)) {
+                    pat.setId(id);
+                    
+                    Set<OWLLiteral> prop = reasoner.getDataPropertyValues(i, p);
+                    Set<OWLLiteral> values = asUnorderedSet(prop.parallelStream());   
+                    
+                    for (OWLLiteral v:values) {
+                        if (p.getIRI().getRemainder().get().equals("hasFirstName")) {
+                            pat.setFirstName(v.getLiteral());
+                        }
+                        if (p.getIRI().getRemainder().get().equals("hasName")) {
+                            pat.setName(v.getLiteral());
+                        }
+                    }
+                    
+                }
+                
+                
+            }));
+            return pat;
+        }
+        
 
 	/**
 	 * Add all the information

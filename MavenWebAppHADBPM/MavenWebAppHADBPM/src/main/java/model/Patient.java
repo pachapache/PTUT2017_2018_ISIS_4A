@@ -25,8 +25,11 @@ private String antecedents;
 private Boolean validEntourage;
 private Boolean placeAccesible;
 private String notes;
+private String id;
+
+public Patient(){}
  
-public Patient(String name, String firstName, Sexe sexe, Date birth, String placeBirth, int socialSecurityNumber, String ipp, String adress, int phoneNumber, MaritalStatus maritalStatus, String email, Boolean isInternet, int weight, int size, Boolean isValide, String allergies, String pathology, String antecedents, Boolean validEntourage, Boolean placeAccesible, String notes) {
+public Patient(String id, String name, String firstName, Sexe sexe, Date birth, String placeBirth, int socialSecurityNumber, String ipp, String adress, int phoneNumber, MaritalStatus maritalStatus, String email, Boolean isInternet, int weight, int size, Boolean isValide, String allergies, String pathology, String antecedents, Boolean validEntourage, Boolean placeAccesible, String notes) {
          this.name = name;
         this.firstName = firstName;
          this.sexe = sexe;
@@ -47,8 +50,16 @@ public Patient(String name, String firstName, Sexe sexe, Date birth, String plac
          this.validEntourage = validEntourage;
          this.placeAccesible = placeAccesible;
          this.notes = notes;
+         this.id = id;
      }
  
+     public String getId() {
+         return this.id;
+     }
+     
+     public void setId(String id) {
+         this.id = id;
+     }
      public String getName() {
          return name;
      }
